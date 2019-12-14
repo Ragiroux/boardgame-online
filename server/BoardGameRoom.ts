@@ -1,6 +1,6 @@
 import { Room, Client } from "colyseus";
 
-export class MyRoom extends Room {
+export class BoardGameRoom extends Room {
 
   onCreate (options: any) {
   }
