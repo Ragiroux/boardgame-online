@@ -8,14 +8,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\client\\src\\App.js",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
+            "name": "Debug Server",
+            "args":["${workspaceRoot}\\server\\src\\Server.ts"],
+            "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+            "sourceMaps": true,
+            "protocol": "inspector"
         }
     ]
 }

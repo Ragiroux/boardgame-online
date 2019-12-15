@@ -3,9 +3,7 @@ import express from "express";
 import cors from "cors";
 import { Server } from "colyseus";
 import { monitor } from "@colyseus/monitor";
-//import socialRoutes from "@colyseus/social/express"
-
-import { BoardGameRoom } from "./BoardGameRoom";
+import { ChatRoom } from "./ChatRoom";
 
 const port = Number(process.env.PORT || 2567);
 const app = express()
@@ -20,7 +18,7 @@ const gameServer = new Server({
 });
 
 // register your room handlers
-gameServer.define('my_room', BoardGameRoom);
+gameServer.define("chat_room", ChatRoom);
 app.use("/colyseus", monitor(gameServer));
 gameServer.listen(port);
 console.log(`Listening on ws://localhost:${ port }`)

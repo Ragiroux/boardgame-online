@@ -14,17 +14,17 @@ class App extends React.Component {
     // development server
     if (window.location.port && window.location.port !== "80") { endpoint += ":2567" }
 
-    this.colyseus = new Client(endpoint)
+      this.colyseus = new Client(endpoint)
 
-    this.room = null;
+      this.colyseus.joinOrCreate("chat_room", {/* options */}).then(room => {
 
-    this.colyseus.joinOrCreate("my_room", {/* options */}).then(room => {
+        this.room = room;
 
-      this.room = room;
+        //room.onStateChange( (message) => this.onUpdateRemote.bind(this)(message));
 
-      room.onMessage( (message) => this.onUpdateRemote.bind(this)(message));
+        room.onStateChange((state) => this.serverStateChanged.bind(this)(state));
 
-      console.log("joined successfully", room);
+        console.log("joined successfully", room);
 
     }).catch(e => {
       console.error("join error", e);
@@ -34,6 +34,13 @@ class App extends React.Component {
       currentText: "",
       messages : []
     };
+  }
+
+  serverStateChanged(state) {
+    console.log("Server state changed", state)
+    this.setState({
+      messages: state.messages
+    })
   }
 
   onUpdateRemote (message) {
@@ -51,13 +58,13 @@ class App extends React.Component {
 
   onInputChange (e) {
     e.preventDefault()
-
     this.setState({ currentText: e.target.value })
   }
 
   onSubmit (e) {
     e.preventDefault()
-    this.room.send(this.state.currentText)
+    // this.room.send(this.state.currentText)
+    this.room.send(this.state.currentText);
     this.setState({
       currentText: "",
       messages: this.state.messages.concat(this.state.currentText)
