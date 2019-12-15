@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import { Server } from "colyseus";
 import { monitor } from "@colyseus/monitor";
-import socialRoutes from "@colyseus/social/express"
+//import socialRoutes from "@colyseus/social/express"
 
 import { BoardGameRoom } from "./BoardGameRoom";
 
@@ -15,17 +15,12 @@ app.use(express.json())
 
 const server = http.createServer(app);
 const gameServer = new Server({
-  server,
+  server : server,
+  express: app
 });
 
 // register your room handlers
-gameServer.define('room', BoardGameRoom);
-
-// register @colyseus/social routes
-app.use("/", socialRoutes);
-
-// register colyseus monitor AFTER registering your room handlers
+gameServer.define('my_room', BoardGameRoom);
 app.use("/colyseus", monitor(gameServer));
-
 gameServer.listen(port);
 console.log(`Listening on ws://localhost:${ port }`)
