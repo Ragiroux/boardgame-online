@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import { Server } from "colyseus";
 import { monitor } from "@colyseus/monitor";
-import { ChatRoom } from "./ChatRoom";
+import { ChatRoom } from "./room/ChatRoom";
 
 const port = Number(process.env.PORT || 2567);
 const app = express()

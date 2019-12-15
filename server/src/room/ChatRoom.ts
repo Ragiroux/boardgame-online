@@ -1,6 +1,6 @@
 import { Room, Client } from "colyseus";
-import { ChatState } from "./state/ChatState";
-import { Player } from "./state/PlayerState";
+import { ChatState } from "../state/ChatState";
+import { Player } from "../state/PlayerState";
 
 export class ChatRoom extends Room<ChatState> {
 
