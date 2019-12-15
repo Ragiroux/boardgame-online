@@ -19,11 +19,13 @@ class App extends React.Component {
     this.room = null;
 
     this.colyseus.joinOrCreate("my_room", {/* options */}).then(room => {
+
       this.room = room;
-      room.onMessage((message) => {
-        console.log(message)
-      })
+
+      room.onMessage( (message) => this.onUpdateRemote.bind(this)(message));
+
       console.log("joined successfully", room);
+
     }).catch(e => {
       console.error("join error", e);
     });
@@ -34,9 +36,12 @@ class App extends React.Component {
     };
   }
 
-  onUpdateRemote (newState, patches) {
-    console.log("new state: ", newState, "patches:", patches)
-    this.setState(newState, this.autoScroll.bind(this))
+  onUpdateRemote (message) {
+    console.log("message received from server");
+    this.setState({
+      messages: this.state.messages.concat(message)
+    });
+    this.autoScroll.bind(this);
   }
 
   autoScroll () {
@@ -53,7 +58,10 @@ class App extends React.Component {
   onSubmit (e) {
     e.preventDefault()
     this.room.send(this.state.currentText)
-    this.setState({currentText: ""})
+    this.setState({
+      currentText: "",
+      messages: this.state.messages.concat(this.state.currentText)
+    });
   }
 
   render() {
