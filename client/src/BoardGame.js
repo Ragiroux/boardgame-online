@@ -1,5 +1,6 @@
 import React from "react";
 import Tile from "./Tile";
+import "./styles/boardgame.scss";
 
 class BoardGame extends React.Component {
     NUM_ROWS = 7;
@@ -16,18 +17,19 @@ class BoardGame extends React.Component {
         let board = [];
 
         for ( let i = 0; i < this.NUM_ROWS * this.NUM_COL; i++) {
-            board.push({});
+            board.push({
+                //todo: define state of each tiles
+                "type": "mountain"
+            });
         }
         return board;
     }
 
     render() {
         
-        return <div>
+        return <div class="board-game">
             {this.board.map((tile) => 
-                <ul>
-                    <Tile/>
-                </ul>
+                    <Tile type={tile.type}/>
             )}
         </div>
     }
