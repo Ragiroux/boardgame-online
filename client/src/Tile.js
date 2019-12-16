@@ -1,11 +1,12 @@
 import React from "react";
+import './styles/tile.scss'
 
 class Tile extends React.Component {
-    
+
 
     render() {
-        return <div>
-            This is a board tile!
+        return <div class="tile">
+            
             </div>
     }
 }

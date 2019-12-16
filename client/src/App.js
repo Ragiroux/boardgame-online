@@ -2,7 +2,7 @@ import React from "react";
 import findDOMNode from 'react-dom';
 import { Client } from 'colyseus.js'
 import BoardGame from "./BoardGame";
-
+import './styles/App.scss'
 class App extends React.Component {
 
   constructor() {
