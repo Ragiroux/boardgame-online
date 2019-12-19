@@ -26,12 +26,16 @@ class BoardGame extends React.Component {
     }
 
     render() {
-        
-        return <div class="board-game">
+        return <div id="grid" class="clear">
+            {this.board.map((tile) => 
+                    <li><Tile type={tile.type}/></li>
+            )}
+        </div>
+        /*return <div class="board-game">
             {this.board.map((tile) => 
                     <Tile type={tile.type}/>
             )}
-        </div>
+        </div>*/
     }
 }
 

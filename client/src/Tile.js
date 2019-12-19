@@ -5,9 +5,12 @@ class Tile extends React.Component {
 
 
     render() {
-        return <div class="tile">
-                {this.props.type}
+        return <div class="hexagon">
+                <p>{this.props.type}</p>
             </div>
+        /*return <div class="tile">
+                {this.props.type}
+            </div>*/
     }
 }
 
