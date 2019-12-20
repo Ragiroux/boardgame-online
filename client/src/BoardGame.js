@@ -16,7 +16,7 @@ class BoardGame extends React.Component {
     initBoard() {
         let board = [];
 
-        for ( let i = 0; i < this.NUM_ROWS * this.NUM_COL; i++) {
+        for ( let i = 0; i < this.NUM_TILES; i++) {
             board.push({
                 //todo: define state of each tiles
                 "type": "mountain"
@@ -27,9 +27,12 @@ class BoardGame extends React.Component {
 
     render() {
         return <div id="grid" class="clear">
-            {this.board.map((tile) => 
-                    <li><Tile type={tile.type}/></li>
-            )}
+            <ul class="hexagon-grid-container">
+                    {this.board.map((tile) => 
+                    <li class="hexagon"><Tile type={tile.type}/></li>
+                    )}
+            </ul>
+            
         </div>
         /*return <div class="board-game">
             {this.board.map((tile) => 

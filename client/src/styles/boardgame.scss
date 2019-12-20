@@ -8,9 +8,21 @@ $column-height: 65%;
   justify-content: center;
 }
 
+
+/* Outer Hexagon */
+.hexagon-grid-container {
+	display: flex;
+	flex-wrap: wrap;
+	width: 60%;
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+}
+
+/*
 #grid {
   position: relative;
-  width: 60%;
+  width: 50%;
   margin: 0 auto;
   padding: 0; 
 }
@@ -19,7 +31,7 @@ $column-height: 65%;
   list-style-type: none;
   position: relative;
   float: left;
-  width: 27.85714285714286%;
+  width: 20%;
   padding: 0 0 32.16760145166612% 0;
   -o-transform: rotate(-60deg) skewY(30deg);
   -moz-transform: rotate(-60deg) skewY(30deg);
@@ -57,3 +69,5 @@ $column-height: 65%;
   display: block;
   clear: both;
 }
+
+*/
