@@ -26,13 +26,12 @@ class BoardGame extends React.Component {
     }
 
     render() {
-        return <div id="grid" class="clear">
-            <ul class="hexagon-grid-container">
+        return <div class="grid">
+            <ul id="hexGrid">
                     {this.board.map((tile) => 
-                    <li class="hexagon"><Tile type={tile.type}/></li>
+                    <li class="hex"><Tile type={tile.type}/></li>
                     )}
             </ul>
-            
         </div>
         /*return <div class="board-game">
             {this.board.map((tile) => 
